@@ -1,0 +1,43 @@
+<div class="text-layout">
+    <h1>DecimalPipe y Porcentaje</h1>
+    <p>Pipes incluidos en Angular - Usualmente en el Common Module</p>
+    <p style="font-size: small;"> los argumentos de todos son opcionales</p>
+
+    <div class="grid">
+        <div class="col-4">
+            <p-card header="Representaciones Númericas" subheader="con pipe | number">
+
+                <p><i class="pi pi-dollar"></i> {{numero}} - Valor sin pipe </p>
+                <p><i class="pi pi-dollar"></i> {{numero | number}} - con pipe | number </p>
+                <p><i class="pi pi-dollar"></i> {{numero | number:'1.4-4'}} - con pipe |number:'1.2-2' </p>
+                <p><i class="pi pi-dollar"></i> {{numero | number:'1.2-2':'es'}} - con pipe | number:'1.3-3':'es' </p>
+            </p-card>
+        </div>
+
+        <div class="col-4">
+
+            <p-card header="Representaciones Númericas" subheader="con pipe | currency">
+                <p>{{numero}} - Valor sin pipe </p>
+                <p> {{numero | currency}} - con pipe | currency </p>
+                <p> {{numero | currency:'KRW':'symbol-narrow':'1.2-2':'es'}} - con pipe | currency:'KRW':'symbol-narrow':'1.2-2':'es' </p>
+            </p-card>
+        </div>
+
+        <div class="col-4">
+            <p-card header="Representaciones numericas" subheader="con pipe | percent">
+                <p>{{porcentaje}} - Valor sin pipe </p>
+                <p> {{porcentaje | percent}} - con pipe | percent </p>
+                <p>{{porcentaje | percent:'3.2-2'}} - con pipe | percent:'3.2-2'</p>
+                <p>{{porcentaje | percent:'2.1-1':'es'}} - con pipe | percent:'3.2-2':'es' </p>
+
+            </p-card>
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>

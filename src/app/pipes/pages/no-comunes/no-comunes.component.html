@@ -1,0 +1,130 @@
+<div class="text-layout">
+    <h1>Pipes no tan comunes</h1>
+    <p>Pipes incliodos en Angular - usualmente en el Common Module</p>
+
+    <div class="grid">
+        <!--Izquierda-->
+        <div class="col md-6 sm-9">
+
+            <!--i18nSelect Pipe-->
+            <div>
+
+                <p-fieldset legend="i18nSelectPipe" [toggleable]="true" [collapsed]="collapsed">
+                    <p *ngFor="let persona of personas">
+                        Saludos {{persona['name']}} es un placer {{persona['gender'] | i18nSelect:mapInv}} a nuestro evento
+                    </p>
+                    <hr>
+                    <p>El i18nSelect nos permite, dependiendo del valor que evaluemos, mostrar otra cadena de texto </p>
+                    <hr>
+
+                    <p>Dicha cadena de texto tiene que estar guardada anteriormente en un objeto donde el 'key' es el valor evaluado y el 'value' el que deseamos mostrar </p>
+
+                    <hr>
+                    <p>Este objeto se pasa al pipe como un argumento obligatoriamente, sin el no funciona</p>
+
+                    <fieldset style="background-color: #17212f; border:none; border-radius: 10px;">
+                        <h3>Practica</h3>
+                        <p> Saludos {{personas[index].name}} es un placer {{personas[index].gender | i18nSelect:mapInv}} a nuestro evento</p>
+
+                        <button pButton type="button" label="Cambiar Persona" class="p-button-raised p-button-info" (click)="cambiarPersona()"></button>
+                    </fieldset>
+
+
+                </p-fieldset>
+            </div>
+
+            <hr>
+            <!--Slice Pipe-->
+            <div>
+                <p-fieldset legend="slice Pipe" [toggleable]="true" [collapsed]="collapsed">
+
+                    <p>Peremite cortar el arreglo de forma visual para mostrar solo lo que indiquemos</p>
+                    <h3>Original</h3>
+                    <pre>{{clientesV}}</pre>
+
+                    <p> | slice:0</p>
+                    <pre>{{clientesV  | slice:0}}</pre>
+
+                    <p> | slice:0:2</p>
+                    <pre>{{clientesV  | slice:0:2}}</pre>
+
+                    <p> | slice:2:4</p>
+                    <pre>{{clientesV  | slice:2:4}}</pre>
+                </p-fieldset>
+            </div>
+            <hr>
+
+            <!--Json Pipe-->
+            <div>
+                <p-fieldset legend="json Pipe" [toggleable]="true" [collapsed]="collapsed">
+
+                    <p>Sirve en gran manera para realizar debugging ya que permite representar un objeto de tipo json en el html, aunque tiene una limitacion para objetos que sean muy complejos</p>
+                    <p><b>Para usarlo:</b> value_expression | json</p>
+
+                    <pre>{{personas | json}}</pre>
+                </p-fieldset>
+            </div>
+
+
+
+
+        </div>
+        <!--Derecha-->
+        <div class="col md-6 sm-9">
+            <!-- i18Plural Pipe inicio-->
+            <div>
+                <p-fieldset legend="i18PluralPipe" [toggleable]="true" [collapsed]="collapsed">
+
+                    <p>Actualmente {{clientesN.length | i18nPlural:mapCli}} esperando</p>
+                    <p>Actualmente {{clientesU.length | i18nPlural:mapCli}} esperando</p>
+                    <p>Actualmente {{clientesV.length | i18nPlural:mapCli}} esperando</p>
+                    <hr>
+
+                    <p>El i18nPlural al igual que el i 18nSelect nos permite cambiar la ifnormacion mostrada al evaluar un valor, sin embargo nos permite en el objeto con el key 'other' agregar lo que querramos mostrar cuando el valor no coincida con ninguno
+                        de los que hallamos establecido en la evaluacion</p>
+
+                    <fieldset style="background-color: #17212f; border:none; border-radius: 10px;">
+                        <h3>Practica</h3>
+                        <p>Actualmente {{clientes.length | i18nPlural:mapCli}} esperando</p>
+
+                        <span class="p-buttonset">
+                        <button pButton type="button" label="Agregar Persona" class="p-button-raised p-button-secondary" (click)="agregarPersona()"></button>
+                        <button pButton type="button" label="Borrar Persona" (click)="borrarPersona()" class='p-button-raised p-button-secondary' [disabled]="disabled"></button>
+        
+        
+                        
+                    </span>
+                    </fieldset>
+                </p-fieldset>
+            </div>
+
+            <hr>
+
+            <!--KeyValue Pipe Inicio-->
+            <div>
+                <p-fieldset legend="keyvalue Pipe" [toggleable]="true" [collapsed]="collapsed">
+                    <p>Permite mostrar los valores de un objeto con pares key:value por separado <br> <b> Para aplicarlo:  </b>value_expression | keyvalue -> al elemento con el objeto (por ejemplo en un ngFor) y mostrar cada item:value o item:key a gusto.
+                    </p>
+
+                    <ul>
+                        <li *ngFor="let item of anais | keyvalue"> <b>{{item.key | titlecase}} : </b>{{item.value | titlecase}}
+                        </li>
+                    </ul>
+                </p-fieldset>
+            </div>
+            <hr>
+
+            <!--Async Pipe-->
+            <div>
+                <p-fieldset legend="async Pipe" [toggleable]="true" [collapsed]="collapsed">
+
+                    <!-- <pre> {{myObservable | async}}</pre> -->
+
+                    <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa</pre>
+                    <pre>{{valorPromesa | async}}</pre>
+                </p-fieldset>
+            </div>
+
+        </div>
+    </div>
+</div>

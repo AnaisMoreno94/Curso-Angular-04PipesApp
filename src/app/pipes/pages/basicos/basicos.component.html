@@ -1,0 +1,104 @@
+<div class="text-layout">
+
+    <h1>Pipes Pasicos</h1>
+
+    <p>Pipes Incluidos en Angular - Usualmente en el Common Module</p>
+    <p> Los pipes solo transforman la representación grafica de los datos, no el dato en sí</p>
+
+    <div class="grid">
+
+        <div class="col-4">
+            <p-card header="&#123; &#123; dato | uppercase &#125; &#125;" subheader="Pipe para representar datos de tipo string en mayúsculas">
+                <div class="grid">
+                    <p class="col-6">Dato: {{uppercase}} <i class="pi pi-arrow-right"></i> </p>
+                    <p class="col-6"> {{uppercase | uppercase }}</p>
+                </div>
+
+
+            </p-card>
+        </div>
+
+        <div class="col-4">
+            <p-card header=" &#123; &#123; dato | lowercase &#125; &#125;" subheader="Pipe para representar datos de tipo string en minúsculas">
+                <div class="grid">
+                    <p class="col-6">Dato: {{lowercase}} <i class="pi pi-arrow-right"></i></p>
+                    <p class="col-6">{{ lowercase | lowercase}}</p>
+                </div>
+            </p-card>
+        </div>
+
+        <div class="col-4">
+            <p-card header="&#123; &#123; dato | titlecase &#125; &#125;" subheader="Pipe para representar datos de tipo string en camelcase">
+                <div class="grid">
+                    <p class="col-6">Dato: {{camelcase}} <i class="pi pi-arrow-right"></i></p>
+                    <p class="col-6">{{camelcase | titlecase}} </p>
+                </div>
+            </p-card>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="text-layout">
+    <h1>Date | Fecha | Pipe</h1>
+    <p> Pipe para cambiar la representacion de las fechas y horas</p>
+    <p>Dato trabajado : {{fecha}}</p>
+
+    <div class="grid">
+        <div class="col-6">
+            <p-card subheader="Aplicacion del pipe">
+                <p>Cambiar formato de fecha</p>
+                <ul>
+                    <li> fecha | date</li>
+                    <li> fecha | date:'short'</li>
+                    <li> fecha | date:'long'</li>
+                    <li> fecha | date:'fullDate'</li>
+                    <li> fecha | date:'MMMM,EEEE'</li>
+                </ul>
+
+                <hr>
+
+                <p>Cambiar Zona Horaria</p>
+
+                <ul>
+                    <li>fecha | date:'long':'GMT-4'</li>
+                    <li>fecha | date:'long':'GMT-2'</li>
+                </ul>
+
+                <p>Cambiar local / El formato y el idioma dependeran del local</p>
+                <ul>
+                    <li> fecha | date:'long':'':'es</li>
+                    <li> fecha | date:'long':'GMT-4':'fr'</li>
+                </ul>
+            </p-card>
+        </div>
+        <div class="col-6">
+            <p-card subheader="Visualizacion de datos con pipe">
+                <p>Cambiar Formato de Fecha</p>
+                <ul>
+                    <li>{{fecha | date}}</li>
+                    <li>{{fecha | date:'short'}}</li>
+                    <li>{{fecha | date:'long'}}</li>
+                    <li>{{fecha | date:'fullDate'}}</li>
+                    <li>{{fecha | date:'MMMM,EEEE'}}</li>
+                </ul>
+
+                <hr>
+                <p>Cambiar Zona Horaria</p>
+                <ul>
+                    <li>{{fecha | date:'long':'GMT-4'}}</li>
+                    <li>{{fecha | date:'long':'GMT-2'}}</li>
+                </ul>
+
+                <p>Cambiar Local</p>
+                <ul>
+                    <li>{{fecha | date:'long':'':'es'}}</li>
+                    <li>{{fecha | date:'long':'GMT-4':'fr'}}</li>
+                </ul>
+
+
+            </p-card>
+        </div>
+    </div>
+</div>

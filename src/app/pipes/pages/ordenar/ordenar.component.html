@@ -1,0 +1,104 @@
+<div class="text-layout">
+    <h1>Pipes personalizados</h1>
+    <p>Pipes generados por nosotros mismos</p>
+    <div class="grid">
+        <div class="col-12">
+            <div>
+                <p-fieldset legend="Pipe | mayuscula" [toggleable]="true" [collapsed]="true">
+                    <p> Valor : {{nombre}} </p>
+
+                    <p> Resultado : {{nombre | mayusculas}}</p>
+
+                    <p-panel header="Con Argumentos (true or false)">
+
+                        <pre> | mayusculas (valor por defecto true) : {{nombre | mayusculas}}</pre>
+                        <pre> | mayusculas:false (hace toLowerCase()) : {{nombre | mayusculas:false}}</pre>
+                        <pre> | mayusculas:true:'Hola' : {{nombre | mayusculas:true:'Hola'}}</pre>
+                        <pre> | mayusculas:argumento_en_variable : {{nombre | mayusculas:argumento}}; argumento: {{argumento}}</pre>
+
+                        <div class="grid">
+
+                            <div class="col">
+                                <button pButton label="Cambiar argumento" class="p-button p-button-danger " type="button" (click)="cambiarArgumento()"></button>
+                            </div>
+                        </div>
+                    </p-panel>
+                </p-fieldset>
+            </div>
+        </div>
+
+        <div class="col-12 mt-2">
+            <p-toolbar>
+                <div class="p-toolbar-group-left">
+                    <h2 style="color: var(--gray-100)">Pipe | ordenar [ : argumento ]</h2>
+                </div>
+
+                <div class="p-toolbar-group-right">
+                    <button pButton (click)="changeOrder('model')" label="Por Modelo" icon="pi pi-sort" class="p-button-info mr-1"></button>
+                    <button pButton (click)="changeOrder('year')" label="Por Año" icon="pi pi-sort" class="p-button-success mr-1"></button>
+                    <button pButton (click)="changeOrder('brand')" label="Por Marca" icon="pi pi-sort" class="p-button-warning mr-1"></button>
+                    <button pButton (click)="changeOrder('color')" label="Por Color" icon="pi pi-sort" class="p-button-help"></button>
+                </div>
+            </p-toolbar>
+        </div>
+
+        <div class="col-12 mt-2">
+            <p-table [value]="cars | ordenar:order">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Model</th>
+                        <th>Year</th>
+                        <th>Brand</th>
+                        <th>Color</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-car>
+                    <tr>
+                        <td>{{car.model}}</td>
+                        <td>{{car.year}}</td>
+                        <td>{{car.brand}}</td>
+                        <td>{{car.color | colores}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+
+
+
+        <div class="col-12">
+            <h2>Tabla Ordenada con TableSort de <span style="color: var(--gray-200);">PrimeNG </span></h2>
+
+            <p-table [value]="cars | slice:0 ">
+                <!--Lo mando con un slice porque el Sortable Column de PrimeNg modifica el arreglo original-->
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="model">Model
+                            <p-sortIcon field="model"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="year">Year
+                            <p-sortIcon field="year"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="brand">Brand
+                            <p-sortIcon field="brand"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="color">Color
+                            <p-sortIcon field="color"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-car>
+                    <tr>
+                        <td>{{car.model}}</td>
+                        <td>{{car.year}}</td>
+                        <td>{{car.brand}}</td>
+                        <td>{{car.color | colores}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+
+
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,23 @@
+// Practica de inicio app.component.html
+
+<h1 class="text-layout">{{nombre | titlecase }}</h1>
+
+<button pButton type="button" (click)="mostrarNombre" label="Cambiar Nombre" icon="pi pi-check-circle" iconPos="right" class="p-button-help"></button>
+
+
+<!-- <p-card header="Titulo de la tarjeta">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae tenetur voluptas temporibus a omnis accusamus, mollitia cum sed illo perferendis ratione ipsa et, eligendi illum nulla? Laboriosam unde nesciunt in.
+</p-card> -->
+
+<p-card [header]="nombre | titlecase" subheader="Estamos practicando con los cards">
+    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem debitis fugiat provident tempore, dolorem temporibus atque quo, dolores neque molestiae odit, recusandae harum labore cumque! Sed minima iure vero aspernatur.</p>
+</p-card>
+
+// Practica inicio app.component.ts
+
+
+  nombre:string = 'anais moreno'
+
+  mostrarNombre(){
+    console.log(this.nombre)
+  }
